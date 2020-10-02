@@ -9,7 +9,11 @@
         "forceConsistentCasingInFileNames": false,
         "inlineSourceMap": true,
         "inlineSources": true,
-        "lib": ["dom", "dom.iterable", "esnext"],
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
         "jsx": "react",
         "module": "commonjs",
         "moduleResolution": "node",
@@ -20,6 +24,12 @@
         "strict": true,
         "target": "es5"
     },
-    "exclude": ["**/*.test.*", "node_modules", "src/setupTests.ts"],
-    "include": ["src"]
+    "exclude": [
+        "**/*.test.*",
+        "node_modules",
+        "src/setupTests.ts"
+    ],
+    "include": [
+        "src"
+    ]
 }
