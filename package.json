@@ -61,7 +61,7 @@
     },
     "scripts": {
         "build": "tsc --pretty",
-        "build-namespace": "tsc --outFile namespace.js ./src/utilities/collection-utils.ts --module system --pretty",
+        "build-global": "tsc --project tsconfig.global.json --pretty",
         "clean": "rimraf dist && rimraf coverage",
         "configure:git": "echo Ensuring git hooksPath is set to .githooks directory && git config core.hooksPath .githooks && chmod +x .githooks/*",
         "coverage": "jest ./src --coverage",

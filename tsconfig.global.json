@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "moduleResolution": "node",
+        "outFile": "global.js"
+    },
+    "files": [
+        "./src/utilities/collection-utils.ts"
+    ]
+}

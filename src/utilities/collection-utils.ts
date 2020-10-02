@@ -1,5 +1,5 @@
-import { List } from "immutable";
-import _, { Dictionary, ListOfRecursiveArraysOrValues, NumericDictionary } from "lodash";
+import * as immutable from "immutable";
+import * as _ from "lodash";
 
 // -----------------------------------------------------------------------------------------
 // #region Private Methods
@@ -20,8 +20,8 @@ export namespace CollectionUtils {
      */
     export function equalsBy<T, V>(
         selector: (element: T) => V,
-        array1: Array<T> | List<any> | undefined,
-        array2: Array<T> | List<any> | undefined
+        array1: Array<T> | immutable.List<any> | undefined,
+        array2: Array<T> | immutable.List<any> | undefined
     ) {
         if (array1 == null) {
             return array2 == null;
@@ -53,15 +53,15 @@ export namespace CollectionUtils {
      * Uses ... syntax to allow a single collection or multiple collections to be passed in, ie
      * CollectionUtils.hasValues([]) or CollectionUtils.hasValues([], [], [])
      *
-     * @param {(...Array<(any[] | List<any>)} collections
+     * @param {(...Array<(any[] | immutable.List<any>)} collections
      * @returns {boolean} False if `collections` is null/undefined, or every element is also null/undefined,
      * or has no sub-elements. True if any element has sub-elements.
      */
     export function hasValues(
-        ...collections: Array<any[] | List<any> | undefined>
+        ...collections: Array<any[] | immutable.List<any> | undefined>
     ): boolean {
         let hasValues = false;
-        collections.forEach((collection: any[] | List<any> | undefined) => {
+        collections.forEach((collection: any[] | immutable.List<any> | undefined) => {
             if (!isEmpty(collection)) {
                 hasValues = true;
             }
@@ -76,21 +76,21 @@ export namespace CollectionUtils {
      * Uses ... syntax to allow a single collection or multiple collections to be passed in, ie
      * CollectionUtils.isEmpty([]) or CollectionUtils.isEmpty([], [], [])
      *
-     * @param {(...Array<(any[] | List<any>)} collections
+     * @param {(...Array<(any[] | immutable.List<any>)} collections
      * @returns {boolean} True if `collections` is null/undefined, or every element is also null/undefined,
      * or has no sub-elements. False if any element has sub-elements.
      */
     export function isEmpty(
-        ...collections: Array<any[] | List<any> | undefined>
+        ...collections: Array<any[] | immutable.List<any> | undefined>
     ): boolean {
         let isEmpty = true;
 
-        collections.forEach((collection: any[] | List<any> | undefined) => {
+        collections.forEach((collection: any[] | immutable.List<any> | undefined) => {
             if (collection == null) {
                 return;
             }
-            if (collection instanceof List) {
-                const collectionList = collection as List<any>;
+            if (collection instanceof immutable.List) {
+                const collectionList = collection as immutable.List<any>;
                 if (collectionList.size !== 0) {
                     isEmpty = false;
                 }
@@ -112,12 +112,12 @@ export namespace CollectionUtils {
      * Uses ... syntax to allow a single collection or multiple collections to be passed in, ie
      * CollectionUtils.isNotEmpty([]) or CollectionUtils.isNotEmpty([], [], [])
      *
-     * @param {(...Array<(any[] | List<any>)} collections
+     * @param {(...Array<(any[] | immutable.List<any>)} collections
      * @returns {boolean} False if `collections` is null/undefined, or every element is also null/undefined,
      * or has no sub-elements. True if any element has sub-elements.
      */
     export function isNotEmpty(
-        ...collections: Array<any[] | List<any> | undefined>
+        ...collections: Array<any[] | immutable.List<any> | undefined>
     ): boolean {
         return !isEmpty(...collections);
     };
@@ -128,13 +128,13 @@ export namespace CollectionUtils {
      * @param arr the collection
      * @returns number the length of the collection
      */
-    export function length(arr: Array<any> | List<any>): number {
+    export function length(arr: Array<any> | immutable.List<any>): number {
         if (arr == null) {
             return -1;
         }
 
-        if (arr instanceof List) {
-            return (arr as List<any>).size;
+        if (arr instanceof immutable.List) {
+            return (arr as immutable.List<any>).size;
         }
 
         return (arr as Array<any>).length;
@@ -188,18 +188,18 @@ export namespace CollectionUtils {
         return _.head(array);
     }
 
-    export function flattenDeep<T>(array: ListOfRecursiveArraysOrValues<T> | null | undefined): T[] {
+    export function flattenDeep<T>(array: _.ListOfRecursiveArraysOrValues<T> | null | undefined): T[] {
         return _.flattenDeep(array);
     }
 
     export function sample<T>(
-        collection: Array<T> | Dictionary<T> | NumericDictionary<T> | null | undefined // Using 'Array' since 'List' is imported from Immutable library
+        collection: Array<T> | _.Dictionary<T> | _.NumericDictionary<T> | null | undefined // Using 'Array' since 'List' is imported from Immutable library
     ): T | undefined {
         return _.sample(collection);
     }
 
     export function sampleSize<T>(
-        collection: Array<T> | Dictionary<T> | NumericDictionary<T> | null | undefined, // Using 'Array' since 'List' is imported from Immutable library
+        collection: Array<T> | _.Dictionary<T> | _.NumericDictionary<T> | null | undefined, // Using 'Array' since 'List' is imported from Immutable library
         n?: number
     ): T[] {
         return _.sampleSize(collection, n);
