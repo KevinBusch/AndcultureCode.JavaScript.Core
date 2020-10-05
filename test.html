@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Linking External JavaScript</title>
+</head>
+
+<body>
+    <div id="greet"></div>
+    <script src="http://requirejs.org/docs/release/2.1.5/comments/require.js"></script>
+    <script src="global.js"></script>
+    <script>
+        alert('working!');
+        var source = [1, 2];
+        var index = 0;
+        var value = 3;
+        Andculture.CollectionUtils.replaceElementAt(source, index, value);
+        alert('worked!');
+    </script>
+</body>
+
+</html>
